@@ -42,6 +42,17 @@ public class Project {
 	@Column(name = "updated_date")
 	private Date updatedDate;
 	
+	@Column(name = "description")
+	private String description;
+	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public Project() {
 		super();
 	}
