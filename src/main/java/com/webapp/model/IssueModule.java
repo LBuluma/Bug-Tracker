@@ -33,6 +33,11 @@ public class IssueModule {
 	@Column(name = "updated_date")
 	private Date updatedDate;
 	
+	@Column(name = "project_id")
+	private String projectId;
+	
+	@Column(name = "status")
+	private String status;
 	
 
 	public IssueModule() {
@@ -86,6 +91,26 @@ public class IssueModule {
 	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
+
+	public String getProjectId() {
+		return projectId;
+	}
+
+	public void setProjectId(String projectId) {
+		this.projectId = projectId;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
+	
+	
+	
 	
 	
 

@@ -20,6 +20,10 @@ public class IssueCategory {
 	@Column(name = "priority_id")
 	private String priorityId;
 	
+	
+	@Column(name = "project_id")
+	private String projectId;
+	
 	@Column(name = "updated_by")
 	private int updatedBy;
 	
@@ -91,6 +95,16 @@ public class IssueCategory {
 	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
+
+	public String getProjectId() {
+		return projectId;
+	}
+
+	public void setProjectId(String projectId) {
+		this.projectId = projectId;
+	}
+	
+	
 	
 	
 
