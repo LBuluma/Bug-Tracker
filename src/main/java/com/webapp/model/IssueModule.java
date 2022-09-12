@@ -34,7 +34,7 @@ public class IssueModule {
 	private Date updatedDate;
 	
 	@Column(name = "project_id")
-	private String projectId;
+	private int projectId;
 	
 	@Column(name = "status")
 	private String status;
@@ -92,11 +92,11 @@ public class IssueModule {
 		this.updatedDate = updatedDate;
 	}
 
-	public String getProjectId() {
+	public int getProjectId() {
 		return projectId;
 	}
 
-	public void setProjectId(String projectId) {
+	public void setProjectId(int projectId) {
 		this.projectId = projectId;
 	}
 

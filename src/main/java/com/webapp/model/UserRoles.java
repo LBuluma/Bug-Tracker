@@ -20,6 +20,9 @@ public class UserRoles {
 	
 	@Column(name = "role_name")
 	private String roleName;
+	
+	@Column(name = "project_id")
+	private int projectId;
 
 	@Column(name = "updated_by")
 	private int updatedBy;
@@ -88,6 +91,23 @@ public class UserRoles {
 	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
+
+	public int getProjectId() {
+		return projectId;
+	}
+
+	public void setProjectId(int projectId) {
+		this.projectId = projectId;
+	}
+
+	public String getActiveFlag() {
+		return activeFlag;
+	}
+
+	public void setActiveFlag(String activeFlag) {
+		this.activeFlag = activeFlag;
+	}
+	
 
 	
 	

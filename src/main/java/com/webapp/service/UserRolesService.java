@@ -12,7 +12,7 @@ public interface UserRolesService {
 		public List<UserRoles> getUserRoles(int projectId);
 
 		// save a new or updated Ticket comment
-		public void addNewUserRole(int projectId,TicketComment userRoles);
+		public void addNewUserRole(int projectId,UserRoles userRoles);
 
 		// Get the user role using id.
 		public UserRoles getUserRole(int roleId);

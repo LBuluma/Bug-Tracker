@@ -22,7 +22,7 @@ public class IssueCategory {
 	
 	
 	@Column(name = "project_id")
-	private String projectId;
+	private int projectId;
 	
 	@Column(name = "updated_by")
 	private int updatedBy;
@@ -96,11 +96,11 @@ public class IssueCategory {
 		this.updatedDate = updatedDate;
 	}
 
-	public String getProjectId() {
+	public int getProjectId() {
 		return projectId;
 	}
 
-	public void setProjectId(String projectId) {
+	public void setProjectId(int projectId) {
 		this.projectId = projectId;
 	}
 	
