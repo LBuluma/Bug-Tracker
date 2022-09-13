@@ -20,7 +20,7 @@ public class HelpIssueDaoImpl implements HelpIssueDao{
 	@SuppressWarnings("unchecked")
 	
 	@Override
-	public List<HelpIssue> getIssueCategories(int newModuleId) {
+	public List<HelpIssue> getHelpIssues(int newModuleId) {
 		Session session = this.sessionFactory.openSession();
 		List<HelpIssue> helpIssueList = session.createQuery("from HelpIssue where moduleId := moduleId").
 				setParameter("moduleId", newModuleId).getResultList();

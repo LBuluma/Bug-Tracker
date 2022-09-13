@@ -22,7 +22,7 @@ public class ProjectAssignmentController {
 	private ProjectAssignmentService projectAssignmentService;
 
 	@GetMapping("/view")
-	public String listProjects(Model theModel) {
+	public String listProjectAssignments(Model theModel) {
 		List<ProjectAssignment> theProjectAssignment = projectAssignmentService.getProjectAssignments();
 		theModel.addAttribute("projectAssignment", theProjectAssignment);
 		return "list-assignment";
@@ -36,7 +36,7 @@ public class ProjectAssignmentController {
 	}
 
 	@PostMapping("/saveAssignment")
-	public String saveProject(@ModelAttribute("projectAssignment") ProjectAssignment theProjectAssignment) {
+	public String saveProjectAssignments(@ModelAttribute("projectAssignment") ProjectAssignment theProjectAssignment) {
 		System.out.println("End Date" + theProjectAssignment.getAssignedId());
 		Date date = new Date();
 		theProjectAssignment.setCreatedBy(1);
