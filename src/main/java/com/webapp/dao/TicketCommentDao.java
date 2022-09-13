@@ -6,11 +6,11 @@ import com.webapp.model.TicketComment;
 
 public interface TicketCommentDao {
 	// Get all Ticket in the database for the ticket
-	public List<TicketComment> getTicketComments(String ticketHeaderId);
+	public List<TicketComment> getTicketComments(int ticketHeaderId);
 
 	// save a new or updated Ticket comment
-	public void addNewTicketComment(String ticketHeaderId,TicketComment ticketComment);
+	public void addNewTicketComment(int ticketHeaderId,TicketComment ticketComment);
 
 	// Get the Ticket comment using id.
-	public TicketComment getTicketComment(String ticketHeaderId);
+	public TicketComment getTicketComment(int ticketHeaderId);
 }

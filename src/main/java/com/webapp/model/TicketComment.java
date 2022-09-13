@@ -15,7 +15,7 @@ public class TicketComment {
 	private int commentId;
 
 	@Column(name = "ticket_hdr_id ")
-	private String ticketHeaderId;
+	private int ticketHeaderId;
 
 	@Column(name = "ticket_assign_id")
 	private int ticketAssignId;
@@ -50,11 +50,11 @@ public class TicketComment {
 		this.commentId = commentId;
 	}
 
-	public String getTicketHeaderId() {
+	public int getTicketHeaderId() {
 		return ticketHeaderId;
 	}
 
-	public void setTicketHeaderId(String ticketHeaderId) {
+	public void setTicketHeaderId(int ticketHeaderId) {
 		this.ticketHeaderId = ticketHeaderId;
 	}
 

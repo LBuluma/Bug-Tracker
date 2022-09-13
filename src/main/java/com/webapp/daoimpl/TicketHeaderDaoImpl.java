@@ -36,7 +36,7 @@ public class TicketHeaderDaoImpl implements TicketHeaderDao{
 	}
 
 	@Override
-	public TicketHeader getTicket(String ticketHeaderId) {
+	public TicketHeader getTicket(int ticketHeaderId) {
 		Session session = this.sessionFactory.openSession();
 		TicketHeader ticketHeader = session.get(TicketHeader.class, ticketHeaderId);
 		session.close();

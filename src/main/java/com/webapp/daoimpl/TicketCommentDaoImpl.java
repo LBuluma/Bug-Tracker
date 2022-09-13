@@ -18,7 +18,7 @@ public class TicketCommentDaoImpl implements TicketCommentDao{
 	@SuppressWarnings("unchecked")
 
 	@Override
-	public List<TicketComment> getTicketComments(String ticketHeaderId) {
+	public List<TicketComment> getTicketComments(int ticketHeaderId) {
 		Session session = this.sessionFactory.openSession();
 		List<TicketComment> ticketCommentList = session.createQuery("from TicketComment where ticketHeaderId := ticketHeaderId").
 				setParameter("ticketHeaderId", ticketHeaderId).getResultList();
@@ -27,7 +27,7 @@ public class TicketCommentDaoImpl implements TicketCommentDao{
 	}
 
 	@Override
-	public void addNewTicketComment(String ticketHeaderId, TicketComment ticketComment) {
+	public void addNewTicketComment(int ticketHeaderId, TicketComment ticketComment) {
 		Session session = this.sessionFactory.openSession();
 		ticketComment.setTicketHeaderId(ticketHeaderId);
 		Transaction tx = session.beginTransaction();
@@ -38,7 +38,7 @@ public class TicketCommentDaoImpl implements TicketCommentDao{
 	}
 
 	@Override
-	public TicketComment getTicketComment(String ticketHeaderId) {
+	public TicketComment getTicketComment(int ticketHeaderId) {
 		Session session = this.sessionFactory.openSession();
 		TicketComment ticketComment = session.get(TicketComment.class, ticketHeaderId);
 		session.close();

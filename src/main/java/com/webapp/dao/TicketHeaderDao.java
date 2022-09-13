@@ -12,6 +12,6 @@ public interface TicketHeaderDao {
 			public void addNewTicket(int projectId, TicketHeader ticketHeader);
 
 			// Get the Ticket  using id.
-			public TicketHeader getTicket(String ticketHeaderId);
+			public TicketHeader getTicket(int ticketHeaderId);
 
 }
