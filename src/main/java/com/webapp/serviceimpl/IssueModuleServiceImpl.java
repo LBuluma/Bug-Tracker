@@ -3,11 +3,14 @@ package com.webapp.serviceimpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.webapp.dao.IssueModuleDao;
 import com.webapp.model.IssueModule;
 import com.webapp.service.IssueModuleService;
 
+@Service
 public class IssueModuleServiceImpl implements IssueModuleService{
 	
 	@Autowired
@@ -20,6 +23,7 @@ public class IssueModuleServiceImpl implements IssueModuleService{
 	}
 
 	@Override
+	@Transactional
 	public void addNewIssueModule(int projectId, IssueModule issueModule) {
 		isssueModuleDao.addNewIssueModule(projectId, issueModule);		
 	}

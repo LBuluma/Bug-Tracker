@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.webapp.dao.ProjectDao;
 import com.webapp.model.Project;
@@ -23,6 +24,7 @@ public class ProjectServiceImpl implements ProjectService{
 	}
 
 	@Override
+	@Transactional
 	public void saveProject(Project project) {
 		projectDao.saveProject(project);
 		

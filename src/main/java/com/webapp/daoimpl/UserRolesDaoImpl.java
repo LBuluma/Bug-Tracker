@@ -7,11 +7,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.webapp.dao.UserRolesDao;
-import com.webapp.model.TicketComment;
 import com.webapp.model.UserRoles;
 
+@Repository
 public class UserRolesDaoImpl implements UserRolesDao
 {
 

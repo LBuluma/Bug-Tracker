@@ -6,10 +6,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.webapp.dao.TicketHeaderDao;
 import com.webapp.model.TicketHeader;
 
+@Repository
 public class TicketHeaderDaoImpl implements TicketHeaderDao{
 	@Autowired
 	private SessionFactory sessionFactory;

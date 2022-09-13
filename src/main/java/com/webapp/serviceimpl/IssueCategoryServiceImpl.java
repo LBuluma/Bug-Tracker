@@ -3,11 +3,13 @@ package com.webapp.serviceimpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.webapp.dao.IssueCategoryDao;
 import com.webapp.model.IssueCategory;
 import com.webapp.service.IssueCategoryService;
 
+@Service
 public class IssueCategoryServiceImpl implements IssueCategoryService {
 	@Autowired
 	private IssueCategoryDao issueCategoryDao;

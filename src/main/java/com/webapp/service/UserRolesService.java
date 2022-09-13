@@ -2,7 +2,6 @@ package com.webapp.service;
 
 import java.util.List;
 
-import com.webapp.model.TicketComment;
 import com.webapp.model.UserRoles;
 
 public interface UserRolesService {
