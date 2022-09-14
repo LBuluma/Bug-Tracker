@@ -31,7 +31,7 @@
      <table class="table table-striped table-bordered">
       <tr>
        
-       <!--<th>#</th> -->     
+       <th>#</th>  
        <th>Project Name</th>
        <th>Owner</th>
        <th>Start Date</th>      
@@ -43,7 +43,7 @@
       </tr>
 
       <!-- loop over and print our customers -->
-      <c:forEach var="tempProject" items="${projects}">
+      <c:forEach var="tempProject" items="${projects}" varStatus='status'>
    
 
       <!-- construct an "update" link with customer id -->
@@ -60,6 +60,7 @@
        </c:url>-->
 
        <tr>
+       <td>${status.count}.</td>
         <td>${tempProject.projectName}</td>
          <td>${tempProject.owner}</td>
          <td>${tempProject.startDate}</td>

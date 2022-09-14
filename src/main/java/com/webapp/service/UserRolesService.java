@@ -8,10 +8,10 @@ public interface UserRolesService {
 	
 	
 	// Get all user roles in the database for the projects
-		public List<UserRoles> getUserRoles(int projectId);
+		public List<UserRoles> getUserRoles();
 
-		// save a new or updated Ticket comment
-		public void addNewUserRole(int projectId,UserRoles userRoles);
+		// save a new or updated user role
+		public void addNewUserRole(UserRoles userRoles);
 
 		// Get the user role using id.
 		public UserRoles getUserRole(int roleId);

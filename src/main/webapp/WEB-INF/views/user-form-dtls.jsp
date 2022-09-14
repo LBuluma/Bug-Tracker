@@ -7,7 +7,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>BUG TRACKER</title>
-<!-- CSS only -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" >
+<!-- JavaScript Bundle with Popper -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
@@ -21,6 +22,16 @@
      <div class="panel-title">Add User</div>
     </div>
     <div class="panel-body">
+    
+    <form:form action="saveUser" cssClass="form-horizontal"
+      method="post" modelAttribute="userRoles">
+       <div class="form-group">
+       <label for="roleName" class="col-md-3 control-label">Role</label>
+       <div class="col-md-9">
+        <form:input path="roleName" cssClass="form-control" />
+       </div>
+      </div>
+      </form:form>
      <form:form action="saveUser" cssClass="form-horizontal"
       method="post" modelAttribute="user">
 
@@ -34,9 +45,6 @@
         <form:input path="firstName" cssClass="form-control" />
        </div>
       </div>
-      
-         
-      
       <div class="form-group">
        <label for="lastname" class="col-md-3 control-label">Last
         Name</label>
@@ -44,20 +52,11 @@
         <form:input path="secondName" cssClass="form-control" />
        </div>
       </div>
+     
       
-       <div class="form-group">
-       <label for="activeFlag" class="col-md-3 control-label">Status</label>
-       <div class="col-md-9">
-        <form:input path="activeFlag" cssClass="form-control" />
-       </div>
-      </div>
       
-      <div class="form-group">
-       <label for="activeFlag" class="col-md-3 control-label">Status</label>
-       <div class="col-md-9">
-        <form:input path="${userRole.activeFlag}" cssClass="form-control" />
-       </div>
-      </div>
+      
+      
 
       <div class="form-group">
        <!-- Button -->
@@ -65,8 +64,11 @@
         <form:button cssClass="btn btn-primary">Submit</form:button>
        </div>
       </div>
+      
+      
 
      </form:form>
+     
      
      
     </div>

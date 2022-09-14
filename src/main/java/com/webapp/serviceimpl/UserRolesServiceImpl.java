@@ -17,14 +17,14 @@ public class UserRolesServiceImpl implements UserRolesService{
 	private UserRolesDao userRolesDao;
 	
 	@Override
-	public List<UserRoles> getUserRoles(int projectId) {
-		return userRolesDao.getUserRoles(projectId);
+	public List<UserRoles> getUserRoles() {
+		return userRolesDao.getUserRoles();
 	}
 
 	@Override
 	@Transactional
-	public void addNewUserRole(int projectId, UserRoles userRoles) {
-		userRolesDao.addNewUserRole(projectId, userRoles);		
+	public void addNewUserRole(UserRoles userRoles) {
+		userRolesDao.addNewUserRole(userRoles);		
 	}
 
 	@Override

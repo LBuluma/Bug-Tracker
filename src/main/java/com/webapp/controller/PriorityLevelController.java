@@ -25,7 +25,7 @@ public class PriorityLevelController {
 	@GetMapping("/view")
 	public String listPriorityLevels(Model theModel) {
 		List<PriorityLevel> thePriorityLevelList = priorityLevelService.getPriorityLevels();
-		theModel.addAttribute("priorityLevel", thePriorityLevelList);
+		theModel.addAttribute("priorityLevelList", thePriorityLevelList);
 		return "list-priorityLevel";
 	}
 
@@ -53,7 +53,7 @@ public class PriorityLevelController {
 		thePriorityLevel.setUpdatedBy(1);
 		System.out.println(date);
 		theModel.addAttribute("priorityLevel", thePriorityLevel);
-		return "project-priority-form";
+		return "project-priorityLevel-form";
 	}
 
 }

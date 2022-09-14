@@ -16,36 +16,41 @@
 <body>
  <div class="container">
   <div class="col-md-offset-1 col-md-10">
-   <h2>CRM - User Relationship Manager</h2>
+   <h2>View Priority Levels</h2>
    <hr />
 
-   <input type="button" value="Add User"
+   <input type="button" value="Add"
     onclick="window.location.href='showForm'; return false;"
     class="btn btn-primary" />
     <br/><br/>
    <div class="panel panel-info">
     <div class="panel-heading">
-     <div class="panel-title">User List</div>
+     <div class="panel-title">Priority List</div>
     </div>
     <div class="panel-body">
      <table class="table table-striped table-bordered">
       <tr>
        
-       <!--<th>#</th> -->     
-       <th>First Name</th>
-       <th>Second Name</th>
-       <th>Active</th>      
+       <th>#</th>    
+       <th>Priority Name</th>
+       <th>SLA(in days)</th>
+       <th>Created Date</th>      
+       <th>Created By</th>
+       <c:if test="${priorityLevel.updatedDate} != null">
+       <th>Updated Date</th>      
+       <th>Updated By</th>
+       </c:if>
        <th>Action</th>
       </tr>
 
       <!-- loop over and print our customers -->
-      <c:forEach var="tempUser" items="${users}">
+      <c:forEach var="priorityLevel" items="${priorityLevelList}" varStatus="status">
    
 
       <!-- construct an "update" link with customer id -->
       
-       <c:url var="updateLink" value="/user/updateForm">
-        <c:param name="userId" value="${tempUser.userId}" />
+       <c:url var="updateLink" value="/priority/updatePriorityForm">
+        <c:param name="priorityLevelId" value="${priorityLevel.priorityId}" />
        </c:url>
 
 
@@ -56,15 +61,22 @@
        </c:url>-->
 
        <tr>
-        <td>${tempUser.firstName}</td>
-         <td>${tempUser.secondName}</td>
-         <td>${tempUser.activeFlag}</td>
+       <td>${status.count}.</td>
+        <td>${priorityLevel.priorityName}</td>
+         <td>${priorityLevel.levelPlan}</td>
+         <td>${priorityLevel.createdDate}</td>
+         <td>${priorityLevel.createdBy}</td>
+         <c:if test="${priorityLevel.updatedDate} != null">
+         <td>${priorityLevel.updatedDate}</td>
+         <td>${priorityLevel.updatedBy}</td>
+         </c:if>
+         
 
        
 
           <td>
          <!-- display the update link -->
-         <a href="${updateLink}" onclick="if (!(confirm('Are you sure you want to update this user?'))) return false">Update</a>
+         <a href="${updateLink}" onclick="if (!(confirm('Are you sure you want to update this priority?'))) return false">Update</a>
          | 
         </td>
 

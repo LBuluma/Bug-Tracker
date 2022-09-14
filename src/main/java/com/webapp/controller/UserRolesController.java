@@ -22,8 +22,8 @@ public class UserRolesController {
 	private UserRolesService userRolesService;
 	
 	@GetMapping("/view")
-	public String listUserRoles(@RequestParam("projectId") int theId, Model theModel) {
-		List<UserRoles> theUserRoles = userRolesService.getUserRoles(theId);
+	public String listUserRoles( Model theModel) {
+		List<UserRoles> theUserRoles = userRolesService.getUserRoles();
 		theModel.addAttribute("userRoles", theUserRoles);
 		return "list-userroles";
 	}
@@ -36,11 +36,11 @@ public class UserRolesController {
 	}
 
 	@PostMapping("/saveUserRole")
-	public String saveRole(@RequestParam("projectId") int theId, @ModelAttribute("userRole") UserRoles theUserRoles) {
+	public String saveRole( @ModelAttribute("userRole") UserRoles theUserRoles) {
 		Date date = new Date();
 		theUserRoles.setCreatedBy(1);
 		theUserRoles.setCreatedDate(date);
-		userRolesService.addNewUserRole(theId, theUserRoles);
+		userRolesService.addNewUserRole(theUserRoles);
 		return "redirect:/userroles/view";
 	}
 

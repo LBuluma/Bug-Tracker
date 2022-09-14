@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.webapp.model.User;
+import com.webapp.model.UserRoles;
+import com.webapp.service.UserRolesService;
 import com.webapp.service.UserService;
 
 
@@ -24,6 +26,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private UserRolesService userRoleService;
 
     @GetMapping("/list")
     public String listUsers(Model theModel) {
@@ -49,7 +54,7 @@ public class UserController {
         return "redirect:/user/list";
     }
 
-    @GetMapping("/updateForm")
+    @GetMapping("/updateFor")
     public String showFormForUpdate(@RequestParam("userId") int theId,
         Model theModel) {
         User theUser = userService.getUser(theId);
@@ -59,6 +64,16 @@ public class UserController {
         System.out.println(date);
         theModel.addAttribute("user", theUser);
         return "user-form";
+    }
+    
+    @GetMapping("/updateForm")
+    public String showForm(@RequestParam("userId") int theId,
+        Model theModel) {
+        User theUser = userService.getUser(theId);
+        UserRoles theUserRole=userRoleService.getUserRole(theUser.getRoleId());
+        theModel.addAttribute("user", theUser);
+        theModel.addAttribute("userRoles", theUserRole);
+        return "user-form-dtls";
     }
 
 //    @GetMapping("/delete")

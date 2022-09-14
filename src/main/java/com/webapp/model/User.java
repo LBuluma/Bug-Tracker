@@ -37,6 +37,9 @@ public class User {
 	@Column(name = "updated_by")
 	private int updatedBy;
 	
+	@Column(name = "role_id")
+	private int roleId;
+	
 	@Column(name = "active_flag")
 	private String activeFlag;
 
@@ -111,5 +114,14 @@ public class User {
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
+
+	public int getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
+	
 
 }

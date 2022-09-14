@@ -15,49 +15,35 @@
 <body>
  <div class="container">
   <div class="col-md-offset-2 col-md-7">
-   <h2 class="text-center">USER</h2>
+   <h2 class="text-center">PRIORITY</h2>
    <div class="panel panel-info">
     <div class="panel-heading">
-     <div class="panel-title">Add User</div>
+     <div class="panel-title">Add Priority</div>
     </div>
     <div class="panel-body">
-     <form:form action="saveUser" cssClass="form-horizontal"
-      method="post" modelAttribute="user">
+     <form:form action="savePriority" cssClass="form-horizontal"
+      method="post" modelAttribute="priorityLevel">
 
       <!-- need to associate this data with customer id -->
-      <form:hidden path="userId" />
+      <form:hidden path="priorityId" />
 
       <div class="form-group">
-       <label for="firstname" class="col-md-3 control-label">First
+       <label for="priorityName" class="col-md-3 control-label">
         Name</label>
        <div class="col-md-9">
-        <form:input path="firstName" cssClass="form-control" />
+        <form:input path="priorityName" cssClass="form-control" />
        </div>
       </div>
       
          
       
       <div class="form-group">
-       <label for="lastname" class="col-md-3 control-label">Last
-        Name</label>
+       <label for="levelPlan" class="col-md-3 control-label">SLA(in Days)</label>
        <div class="col-md-9">
-        <form:input path="secondName" cssClass="form-control" />
+        <form:input path="levelPlan" cssClass="form-control" type='number' />
        </div>
       </div>
-      
-       <div class="form-group">
-       <label for="activeFlag" class="col-md-3 control-label">Status</label>
-       <div class="col-md-9">
-        <form:input path="activeFlag" cssClass="form-control" />
-       </div>
-      </div>
-      
-      <div class="form-group">
-       <label for="activeFlag" class="col-md-3 control-label">Status</label>
-       <div class="col-md-9">
-        <form:input path="${userRole.activeFlag}" cssClass="form-control" />
-       </div>
-      </div>
+ 
 
       <div class="form-group">
        <!-- Button -->

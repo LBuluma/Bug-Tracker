@@ -23,18 +23,16 @@ public class UserRolesDaoImpl implements UserRolesDao
 	@SuppressWarnings("unchecked")
 
 	@Override
-	public List<UserRoles> getUserRoles(int projectId) {
+	public List<UserRoles> getUserRoles() {
 		Session session = this.sessionFactory.openSession();
-		List<UserRoles> userRolesList = session.createQuery("from UserRoles where projectId := projectId").
-				setParameter("projectId", projectId).getResultList();
+		List<UserRoles> userRolesList = session.createQuery("from UserRoles").getResultList();
 		session.close();
 		return userRolesList;
 	}
 
 	@Override
-	public void addNewUserRole(int projectId, UserRoles userRoles) {
+	public void addNewUserRole(UserRoles userRoles) {
 		Session session = this.sessionFactory.openSession();
-		userRoles.setProjectId(projectId);
 		Transaction tx = session.beginTransaction();
 		session.saveOrUpdate(userRoles);
 		tx.commit();
