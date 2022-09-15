@@ -40,7 +40,9 @@ public class UserController {
     @GetMapping("/showForm")
     public String showFormForAdd(Model theModel) {
         User theUser = new User();
+        List<UserRoles> theUserRoleList=userRoleService.getUserRoles();
         theModel.addAttribute("user", theUser);
+        theModel.addAttribute("userRoles", theUserRoleList);
         return "user-form";
     }
     @PostMapping("/saveUser")
@@ -54,19 +56,21 @@ public class UserController {
         return "redirect:/user/list";
     }
 
-    @GetMapping("/updateFor")
+    @GetMapping("/updateForm")
     public String showFormForUpdate(@RequestParam("userId") int theId,
         Model theModel) {
         User theUser = userService.getUser(theId);
+        List<UserRoles> theUserRoleList=userRoleService.getUserRoles();
         Date date = new Date();
         theUser.setUpdatedDate(date);
         theUser.setUpdatedBy(1);
         System.out.println(date);
         theModel.addAttribute("user", theUser);
-        return "user-form";
+        theModel.addAttribute("userRoles", theUserRoleList);
+        return "update-user";
     }
     
-    @GetMapping("/updateForm")
+    @GetMapping("/updateFor")
     public String showForm(@RequestParam("userId") int theId,
         Model theModel) {
         User theUser = userService.getUser(theId);

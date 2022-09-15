@@ -34,12 +34,7 @@
         <form:input path="projectName" cssClass="form-control" />
        </div>
       </div>
-      <div class="form-group">
-       <label for="owner" class="col-md-3 control-label">Project Owner</label>
-       <div class="col-md-9">
-        <form:input path="owner" cssClass="form-control" />
-       </div>
-      </div>
+   
       <div class="form-group">
        <label for="startdate" class="col-md-3 control-label">Start Date</label>
        <div class="col-md-9">
@@ -50,6 +45,12 @@
        <label for="enddate" class="col-md-3 control-label" >End Date</label>
        <div class="col-md-9">
         <form:input path="endDate" cssClass="form-control" type="date"/>
+       </div>
+      </div>
+         <div class="form-group">
+       <label for="description" class="col-md-3 control-label">Project Description</label>
+       <div class="col-md-9">
+        <form:textarea path="description" cssClass="form-control" />
        </div>
       </div>
 

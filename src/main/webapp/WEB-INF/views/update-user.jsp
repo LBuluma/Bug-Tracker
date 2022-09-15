@@ -26,10 +26,10 @@
       <form:hidden path="userId" />
 
       <div class="form-group">
-       <label for="firstname" class="col-md-3 control-label">First
+       <label for="firstname" class="col-md-3 control-label" >First
         Name</label>
        <div class="col-md-9">
-        <form:input path="firstName" cssClass="form-control" />
+        <form:input path="firstName" cssClass="form-control"/>
        </div>
       </div>
       <div class="form-group">
@@ -37,6 +37,13 @@
         Name</label>
        <div class="col-md-9">
         <form:input path="secondName" cssClass="form-control" />
+       </div>
+      </div>
+      
+       <div class="form-group">
+       <label for="activeFlag" class="col-md-3 control-label">Status</label>
+       <div class="col-md-9">
+        <form:input path="activeFlag" cssClass="form-control" />
        </div>
       </div>
       

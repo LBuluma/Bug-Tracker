@@ -52,12 +52,6 @@
         <form:input path="secondName" cssClass="form-control" />
        </div>
       </div>
-     
-      
-      
-      
-      
-
       <div class="form-group">
        <!-- Button -->
        <div class="col-md-offset-3 col-md-9">

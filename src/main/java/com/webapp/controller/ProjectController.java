@@ -43,6 +43,7 @@ public class ProjectController {
 	public String saveProject(@ModelAttribute("project") Project theProject) {
 		if(theProject.getEndDate() == "") {
 			theProject.setEndDate(null);
+			System.out.println("Project ende date is empty")
 		}
 		System.out.println("End Date"+theProject.getEndDate());
 		Date date = new Date();

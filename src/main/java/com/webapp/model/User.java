@@ -24,6 +24,9 @@ public class User {
 	@Column(name = "first_name")
 	private String firstName;
 	
+	@Column(name = "email")
+	private String email;
+	
 	
 	@Column(name = "second_name")
 	private String secondName;
@@ -122,6 +125,16 @@ public class User {
 	public void setRoleId(int roleId) {
 		this.roleId = roleId;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
 	
 
 }

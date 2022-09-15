@@ -58,7 +58,13 @@
        <tr>
         <td>${tempUser.firstName}</td>
          <td>${tempUser.secondName}</td>
-         <td>${tempUser.activeFlag}</td>
+         <td><c:set var="flag" value="${tempUser.activeFlag}"/>
+         <c:if test="${flag == 'REGD'}">
+         <c:out value="YES"/>
+         </c:if>
+         <c:if test="${flag == 'DRMT'}">
+         <c:out value="NO"/>
+         </c:if></td>
 
        
 
