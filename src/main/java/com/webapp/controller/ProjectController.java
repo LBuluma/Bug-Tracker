@@ -1,5 +1,6 @@
 package com.webapp.controller;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -40,16 +41,9 @@ public class ProjectController {
 	}
 
 	@PostMapping("/saveProject")
-	public String saveProject(@ModelAttribute("project") Project theProject) {
-		if(theProject.getEndDate() == "") {
-			theProject.setEndDate(null);
-			System.out.println("Project ende date is empty")
-		}
-		System.out.println("End Date"+theProject.getEndDate());
-		Date date = new Date();
-		theProject.setCreatedBy(1);
-		theProject.setCreatedDate(date);
-		System.out.println(date);
+	public String saveProject(@ModelAttribute("project") Project theProject) throws ParseException {
+	
+		
 		projectService.saveProject(theProject);
 		return "redirect:/project/view";
 	}

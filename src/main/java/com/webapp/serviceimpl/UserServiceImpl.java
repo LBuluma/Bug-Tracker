@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.webapp.dao.UserDao;
-import com.webapp.dao.UserRolesDao;
 import com.webapp.model.User;
 import com.webapp.model.UserRoles;
 import com.webapp.service.UserRolesService;

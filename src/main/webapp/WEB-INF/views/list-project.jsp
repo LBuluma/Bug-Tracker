@@ -32,13 +32,12 @@
       <tr>
        
        <th>#</th>  
-       <th>Project Name</th>
+       <th>Project Title</th>
        <th>Owner</th>
        <th>Start Date</th>      
        <th>End Date</th>
-       <th>Created Date</th>
-       <th>Updated By</th>
-       <th>Update Date</th>
+       <th>Description</th>
+    
        <th>Action</th>
       </tr>
 
@@ -65,9 +64,8 @@
          <td>${tempProject.owner}</td>
          <td>${tempProject.startDate}</td>
          <td>${tempProject.endDate}</td>
-        <td>${tempProject.createdDate}</td>
-        <td>${tempProject.updatedBy}</td>
-        <td>${tempProject.updatedDate}</td>
+        <td>${tempProject.description}</td>
+   
        
 
           <td>
