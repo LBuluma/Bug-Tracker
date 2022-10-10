@@ -49,7 +49,7 @@ public class UserRolesController {
 		UserRoles theUserRoles = userRolesService.getUserRole(theId);
 		Date date = new Date();
 		theUserRoles.setUpdatedDate(date);
-		theUserRoles.setUpdatedBy(1);
+		theUserRoles.setUpdatedBy("1");
 		System.out.println(date);
 		theModel.addAttribute("userRoles", theUserRoles);
 		return "project-userrole-form";

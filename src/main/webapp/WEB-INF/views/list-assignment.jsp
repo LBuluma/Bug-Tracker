@@ -31,7 +31,7 @@
      <table class="table table-striped table-bordered">
       <tr>
        
-       <!--<th>#</th> -->     
+
        <th>Project Name</th>
        <th>Assigned To:</th>
        <th>Assignment Date</th>      
@@ -51,12 +51,6 @@
         <c:param name="assignmentId" value="${projectAssignment.assignmentId}" />
        </c:url>
 
-
-       <!-- construct an "delete" link with customer id -->
-       <!-- 
-       <c:url var="deleteLink" value="/customer/delete">
-        <c:param name="customerId" value="${tempCustomer.id}" />
-       </c:url>-->
 
        <tr>
         <td>${projectAssignment.assignmentId}</td>

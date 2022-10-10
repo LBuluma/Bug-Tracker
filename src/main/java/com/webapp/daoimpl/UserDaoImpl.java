@@ -15,8 +15,8 @@ import com.webapp.model.User;
 public class UserDaoImpl implements UserDao {
 
 	public UserDaoImpl() {
-		// TODO Auto-generated constructor stub
 	}
+	
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -32,6 +32,9 @@ public class UserDaoImpl implements UserDao {
 		tx.commit();
 		session.close();
 	}
+    
+    
+    
 
 	@SuppressWarnings("unchecked")
 	@Override

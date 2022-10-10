@@ -26,7 +26,7 @@ public class UserRoles {
 //	private int projectId;
 
 	@Column(name = "updated_by")
-	private int updatedBy;
+	private String updatedBy;
 	
 	@Column(name = "created_by")
 	private int createdBy;
@@ -61,11 +61,11 @@ public class UserRoles {
 		this.roleName = roleName;
 	}
 
-	public int getUpdatedBy() {
+	public String getUpdatedBy() {
 		return updatedBy;
 	}
 
-	public void setUpdatedBy(int updatedBy) {
+	public void setUpdatedBy(String updatedBy) {
 		this.updatedBy = updatedBy;
 	}
 

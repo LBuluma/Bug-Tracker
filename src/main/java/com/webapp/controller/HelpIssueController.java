@@ -48,7 +48,7 @@ public class HelpIssueController {
 		HelpIssue thehelpIssue = helpIssueService.getHelpIssue(theId);
 		Date date = new Date();
 		thehelpIssue.setUpdatedDate(date);
-		System.out.println(date);
+		System.err.println(date);
 		theModel.addAttribute("helpIssue", thehelpIssue);
 		return "project-helpIssue-form";
 	}
