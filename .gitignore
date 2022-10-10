@@ -1,7 +1,10 @@
-/target/
-.classpath
-.settings/
-.loadpath
+target/**
+*.jar
+*.war
+*.ear
+*.class
+
+# eclipse specific
 *.pydevproject
 .project
 .metadata
@@ -12,3 +15,7 @@ tmp/**/*
 *.bak
 *.swp
 *~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
