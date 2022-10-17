@@ -22,6 +22,8 @@ public class HelpIssueController {
 	@Autowired
 	private HelpIssueService helpIssueService;
 	
+	
+	//Get all the help issues using module Id
 	@GetMapping("/view")
 	public String listHelpIssues(@RequestParam("moduleId") int moduleId,Model theModel) {
 		List<HelpIssue> helpIssueList = helpIssueService.getHelpIssues(moduleId);
@@ -29,6 +31,7 @@ public class HelpIssueController {
 		return "list-helpIssues";
 	}
 
+	//Display the form for adding new help issue
 	@GetMapping("/showForm")
 	public String showFormForAdd(Model theModel) {
 		HelpIssue thehelpIssue = new HelpIssue();
@@ -38,17 +41,12 @@ public class HelpIssueController {
 
 	@PostMapping("/saveHelpIssue")
 	public String saveHelpIssue(@ModelAttribute("helpIssue") HelpIssue thehelpIssue) {
-		Date date = new Date();
-		thehelpIssue.setCreatedDate(date);
 		return "redirect:/helpissue/view";
 	}
 
 	@GetMapping("/updateHelpIssueForm")
 	public String showFormForUpdate(@RequestParam("helpIssueId") int theId, Model theModel) {
 		HelpIssue thehelpIssue = helpIssueService.getHelpIssue(theId);
-		Date date = new Date();
-		thehelpIssue.setUpdatedDate(date);
-		System.err.println(date);
 		theModel.addAttribute("helpIssue", thehelpIssue);
 		return "project-helpIssue-form";
 	}

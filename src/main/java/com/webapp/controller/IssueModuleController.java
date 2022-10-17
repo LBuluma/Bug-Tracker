@@ -38,10 +38,6 @@ public class IssueModuleController {
 
 	@PostMapping("/saveModule")
 	public String saveModule(@RequestParam("projectId") int theId,@ModelAttribute("issueModule") IssueModule theIssueModule) {
-		Date date = new Date();
-		theIssueModule.setCreatedBy(1);
-		theIssueModule.setCreatedDate(date);
-		
 		issueModuleService.addNewIssueModule(theId, theIssueModule);
 		return "redirect:/module/view";
 	}
@@ -49,10 +45,6 @@ public class IssueModuleController {
 	@GetMapping("/updateModuleForm")
 	public String showFormForUpdate(@RequestParam("projectId") int theId, Model theModel) {
 		IssueModule theIssueModule = issueModuleService.getIssueModule(theId);
-		Date date = new Date();
-		theIssueModule.setUpdatedDate(date);
-		theIssueModule.setUpdatedBy(1);
-		System.out.println(date);
 		theModel.addAttribute("issueModule", theIssueModule);
 		return "project-module-form";
 	}

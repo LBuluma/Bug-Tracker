@@ -3,6 +3,8 @@ package com.webapp.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,9 +39,6 @@ public class UserRolesController {
 
 	@PostMapping("/saveUserRole")
 	public String saveRole( @ModelAttribute("userRole") UserRoles theUserRoles) {
-		Date date = new Date();
-		theUserRoles.setCreatedBy(1);
-		theUserRoles.setCreatedDate(date);
 		userRolesService.addNewUserRole(theUserRoles);
 		return "redirect:/userroles/view";
 	}

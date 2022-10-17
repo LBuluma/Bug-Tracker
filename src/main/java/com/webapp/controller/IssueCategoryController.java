@@ -38,10 +38,6 @@ public class IssueCategoryController {
 
 	@PostMapping("/saveIssueCategory")
 	public String saveIssueCategory(@RequestParam("categoryId") int theId,@ModelAttribute("issueCategory") IssueCategory theIssueCategory) {
-		Date date = new Date();
-		theIssueCategory.setCreatedBy(1);
-		theIssueCategory.setCreatedDate(date);
-		System.out.println(date);
 		issueCategoryService.addNewIssueCategory(theId, theIssueCategory);
 		return "redirect:/category/view";
 	}
@@ -49,10 +45,6 @@ public class IssueCategoryController {
 	@GetMapping("/updateCategoryForm")
 	public String showFormForUpdate(@RequestParam("categoryId") int theId, Model theModel) {
 		IssueCategory theIssueCategory = issueCategoryService.getIssueCategory(theId);
-		Date date = new Date();
-		theIssueCategory.setUpdatedDate(date);
-		theIssueCategory.setUpdatedBy(1);
-		System.out.println(date);
 		theModel.addAttribute("issueCategory", theIssueCategory);
 		return "project-issueCategory-form";
 	}

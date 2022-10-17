@@ -31,7 +31,7 @@ public class Project {
 	private String endDate;
 	
 	@Column(name = "updated_by")
-	private int updatedBy;
+	private String updatedBy;
 	
 	@Column(name = "created_by")
 	private int createdBy;
@@ -40,7 +40,7 @@ public class Project {
 	private Date createdDate;
 	
 	@Column(name = "updated_date")
-	private Date updatedDate;
+	private String updatedDate;
 	
 	@Column(name = "description")
 	private String description;
@@ -97,11 +97,11 @@ public class Project {
 		this.endDate = endDate;
 	}
 
-	public int getUpdatedBy() {
+	public String getUpdatedBy() {
 		return updatedBy;
 	}
 
-	public void setUpdatedBy(int updatedBy) {
+	public void setUpdatedBy(String updatedBy) {
 		this.updatedBy = updatedBy;
 	}
 
@@ -121,11 +121,11 @@ public class Project {
 		this.createdDate = createdDate;
 	}
 
-	public Date getUpdatedDate() {
+	public String getUpdatedDate() {
 		return updatedDate;
 	}
 
-	public void setUpdatedDate(Date updatedDate) {
+	public void setUpdatedDate(String updatedDate) {
 		this.updatedDate = updatedDate;
 	}
 	

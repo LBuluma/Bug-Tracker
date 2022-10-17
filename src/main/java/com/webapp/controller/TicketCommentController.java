@@ -31,9 +31,6 @@ public class TicketCommentController {
 	
 	@PostMapping("/saveComment")
 	public String saveComment(@RequestParam("ticketHeaderId") int ticketHeaderId, @RequestParam("ticketComment") TicketComment theTicketComment) {
-		Date date = new Date();
-		theTicketComment.setCreatedBy(1);
-		theTicketComment.setCreatedDate(date);
 		ticketCommentService.addNewTicketComment(ticketHeaderId, theTicketComment);
 		return "redirect:/ticketComment/view";
 	}

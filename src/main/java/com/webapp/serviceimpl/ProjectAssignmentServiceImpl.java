@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.webapp.constants.CommonConstants;
 import com.webapp.dao.ProjectAssignmentDao;
+import com.webapp.facade.AuthenticationFacade;
 import com.webapp.model.ProjectAssignment;
 import com.webapp.service.ProjectAssignmentService;
 
@@ -15,6 +17,12 @@ public class ProjectAssignmentServiceImpl implements ProjectAssignmentService{
 
 	@Autowired
 	private ProjectAssignmentDao projectAssignmentDao;
+
+//	//Authentication object 
+		@Autowired
+		private AuthenticationFacade authenticationFacade;
+	
+
 	
 	@Override
 	public List<ProjectAssignment> getProjectAssignments() {
@@ -22,9 +30,13 @@ public class ProjectAssignmentServiceImpl implements ProjectAssignmentService{
 		
 	}
 
+	//Save new project assignment
 	@Override
 	@Transactional
 	public void assignProject(ProjectAssignment projectAssignment) {
+		projectAssignment.setAssignmentDate(CommonConstants.CURRENT_STR_DATE);
+		projectAssignment.setCreatedDate(CommonConstants.CURRENT_STR_DATE);
+    	projectAssignment.setCreatedBy(Integer.parseInt(authenticationFacade.getUserIdFromAuth()));
 		projectAssignmentDao.assignProject(projectAssignment);
 		
 	}

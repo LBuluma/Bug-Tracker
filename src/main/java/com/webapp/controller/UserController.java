@@ -47,11 +47,6 @@ public class UserController {
     }
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("user") User theUser) {
-    	  Date date = new Date();
-    	  theUser.setCreatedBy(1);
-          theUser.setCreatedDate(date);
-          theUser.setActiveFlag("REGD");
-          System.out.println(date);
     userService.saveUser(theUser);
         return "redirect:/user/list";
     }
@@ -61,10 +56,6 @@ public class UserController {
         Model theModel) {
         User theUser = userService.getUser(theId);
         List<UserRoles> theUserRoleList=userRoleService.getUserRoles();
-        Date date = new Date();
-        theUser.setUpdatedDate(date);
-        theUser.setUpdatedBy(1);
-        System.out.println(date);
         theModel.addAttribute("user", theUser);
         theModel.addAttribute("userRoles", theUserRoleList);
         return "update-user";

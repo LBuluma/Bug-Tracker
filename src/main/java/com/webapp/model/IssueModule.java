@@ -28,10 +28,10 @@ public class IssueModule {
 	private int createdBy;
 	
 	@Column(name = "created_date")
-	private Date createdDate;
+	private String createdDate;
 	
 	@Column(name = "updated_date")
-	private Date updatedDate;
+	private String updatedDate;
 	
 	@Column(name = "project_id")
 	private int projectId;
@@ -76,19 +76,19 @@ public class IssueModule {
 		this.createdBy = createdBy;
 	}
 
-	public Date getCreatedDate() {
+	public String getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(String createdDate) {
 		this.createdDate = createdDate;
 	}
 
-	public Date getUpdatedDate() {
+	public String getUpdatedDate() {
 		return updatedDate;
 	}
 
-	public void setUpdatedDate(Date updatedDate) {
+	public void setUpdatedDate(String updatedDate) {
 		this.updatedDate = updatedDate;
 	}
 

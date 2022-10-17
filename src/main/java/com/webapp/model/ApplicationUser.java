@@ -21,7 +21,7 @@ public class ApplicationUser implements Serializable{
 	@Id
 	@Column(name = "app__user_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int UserId;
+    private int appUserId;
 
 	
 	@Column(name = "user_name")
@@ -54,15 +54,18 @@ public class ApplicationUser implements Serializable{
     
     @Column(name = "created_date")
     private String createdDate;
+    
+    @Column(name = "user_id")
+    private int userId;
 
 	private static final long serialVersionUID = 1L;
 
 	public int getUserId() {
-		return UserId;
+		return userId;
 	}
 
 	public void setUserId(int userId) {
-		UserId = userId;
+		userId = userId;
 	}
 
 	public String getUsername() {
@@ -145,6 +148,15 @@ public class ApplicationUser implements Serializable{
 		this.createdDate = createdDate;
 	}
 
+	public int getAppUserId() {
+		return appUserId;
+	}
+
+	public void setAppUserId(int appUserId) {
+		this.appUserId = appUserId;
+	}
+
+	
 	
   		
 

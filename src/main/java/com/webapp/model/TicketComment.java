@@ -33,7 +33,7 @@ public class TicketComment {
 	private int createdBy;
 
 	@Column(name = "created_date")
-	private Date createdDate;
+	private String createdDate;
 
 	@Column(name = "updated_date")
 	private Date updatedDate;
@@ -98,12 +98,12 @@ public class TicketComment {
 		this.createdBy = createdBy;
 	}
 
-	public Date getCreatedDate() {
+	public String getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
+	public void setCreatedDate(String currentStrDate) {
+		this.createdDate = currentStrDate;
 	}
 
 	public Date getUpdatedDate() {

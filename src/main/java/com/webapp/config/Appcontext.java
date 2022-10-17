@@ -14,6 +14,9 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.context.annotation.SessionScope;
+
+import com.webapp.facade.AuthenticationFacade;
 
 @Configuration
 @PropertySource("classpath:/resources/database.properties")
@@ -68,7 +71,11 @@ public class Appcontext {
 	        transactionManager.setSessionFactory(sessionFactory().getObject());
 	        return transactionManager;
 	    }
-
-		
+//	    
+//	    @Bean
+//	    @SessionScope
+//	    public AuthenticationFacade authenticationFacade() {
+//	    	return new AuthenticationFacade();
+//	    }
 	}
 

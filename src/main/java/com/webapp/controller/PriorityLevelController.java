@@ -38,9 +38,6 @@ public class PriorityLevelController {
 
 	@PostMapping("/savePriority")
 	public String savePriority(@ModelAttribute("priorityLevel") 	PriorityLevel thePriorityLevel) {
-		Date date = new Date();
-		thePriorityLevel.setCreatedBy(1);
-		thePriorityLevel.setCreatedDate(date);
 		priorityLevelService.addNewPriorityLevel(thePriorityLevel);
 		return "redirect:/priority/view";
 	}
@@ -48,10 +45,6 @@ public class PriorityLevelController {
 	@GetMapping("/updatePriorityForm")
 	public String showFormForUpdate(@RequestParam("priorityLevelId") int theId, Model theModel) {
 		PriorityLevel thePriorityLevel = priorityLevelService.getPriorityLevel(theId);
-		Date date = new Date();
-		thePriorityLevel.setUpdatedDate(date);
-		thePriorityLevel.setUpdatedBy(1);
-		System.out.println(date);
 		theModel.addAttribute("priorityLevel", thePriorityLevel);
 		return "project-priorityLevel-form";
 	}

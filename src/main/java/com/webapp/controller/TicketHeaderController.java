@@ -40,9 +40,6 @@ public class TicketHeaderController {
 	
 	@PostMapping("/saveAssignment")
 	public String saveTicket(@RequestParam("projectId") int projectId, @ModelAttribute("ticketHeader") TicketHeader theTicketHeader) {
-		Date date = new Date();
-		theTicketHeader.setCreatedBy(1);
-		theTicketHeader.setCreatedDate(date);
 		ticketHeaderService.addNewTicket(projectId, theTicketHeader);
 		return "redirect:/ticketHeader/view";
 	}
@@ -50,9 +47,6 @@ public class TicketHeaderController {
 	@GetMapping("/updateForm")
 	public String showFormForUpdate(@RequestParam("ticketHeaderId") int theId, Model theModel) {
 		TicketHeader theTicketHeader = ticketHeaderService.getTicket(theId);
-		Date date = new Date();
-		theTicketHeader.setUpdatedDate(date);
-		theTicketHeader.setUpdatedBy(1);
 		theModel.addAttribute("ticketHeader", theTicketHeader);
 		return "project-ticket-form";
 	}

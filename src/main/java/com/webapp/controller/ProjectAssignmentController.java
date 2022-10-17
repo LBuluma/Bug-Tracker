@@ -38,12 +38,6 @@ public class ProjectAssignmentController {
 	@PostMapping("/saveAssignment")
 	public String saveProjectAssignments(@ModelAttribute("projectAssignment") ProjectAssignment theProjectAssignment) {
 		System.out.println("End Date" + theProjectAssignment.getAssignedId());
-		Date date = new Date();
-		theProjectAssignment.setCreatedBy(1);
-		theProjectAssignment.setCreatedDate(date);
-		theProjectAssignment.setAssignedId(1);
-		theProjectAssignment.setAssignmentDate(date);
-		System.out.println(date);
 		projectAssignmentService.assignProject(theProjectAssignment);
 		return "redirect:/assignment/view";
 	}
@@ -51,10 +45,6 @@ public class ProjectAssignmentController {
 	@GetMapping("/updateAssignmentForm")
 	public String showFormForUpdate(@RequestParam("assignmentId") int theId, Model theModel) {
 		ProjectAssignment theProjectAssignment = projectAssignmentService.getAssignment(theId);
-		Date date = new Date();
-		theProjectAssignment.setUpdatedDate(date);
-		theProjectAssignment.setUpdatedBy(1);
-		System.out.println(date);
 		theModel.addAttribute("projectAssignment", theProjectAssignment);
 		return "project-assignment-form";
 	}

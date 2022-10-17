@@ -20,7 +20,7 @@ public class HelpIssue {
 	private int helpIssueId;
 
 	@Column(name = "created_date")
-	private Date createdDate;
+	private String createdDate;
 	
 	@Column(name = "help_issue_name")
 	private String helpIssueName;
@@ -34,6 +34,12 @@ public class HelpIssue {
 	
 	@Column(name = "updated_date")
 	private Date updatedDate;
+	
+	@Column(name = "updated_by")
+	private Date updatedBy;
+	
+	@Column(name = "created_by")
+	private String createdBy;
 	
 	
 
@@ -55,13 +61,13 @@ public class HelpIssue {
 
 
 
-	public Date getCreatedDate() {
+	public String getCreatedDate() {
 		return createdDate;
 	}
 
 
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(String createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -112,6 +118,32 @@ public class HelpIssue {
 	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
+
+
+
+	public Date getUpdatedBy() {
+		return updatedBy;
+	}
+
+
+
+	public void setUpdatedBy(Date updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+	
+	
 	
 	
 
