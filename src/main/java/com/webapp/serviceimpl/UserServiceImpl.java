@@ -1,5 +1,6 @@
 package com.webapp.serviceimpl;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.webapp.commonfunctions.CommonUserFMethods;
 import com.webapp.constants.CommonConstants;
 import com.webapp.dao.UserDao;
+import com.webapp.dto.UserDTO;
 import com.webapp.facade.AuthenticationFacade;
 import com.webapp.model.User;
 import com.webapp.model.UserRoles;
@@ -33,7 +36,6 @@ public class UserServiceImpl implements UserService {
 	
 	//Get all the users in the application
 	@Override
-    @Transactional
     public List < User > getUsers() {
         return usrDao.getUsers();
     }
@@ -41,30 +43,86 @@ public class UserServiceImpl implements UserService {
 	//save the user
     @Override
     @Transactional
-    public void saveUser(User theUser) {
-  	theUser.setCreatedBy(Integer.parseInt(authenticationFacade.getUserIdFromAuth()));
-    	theUser.setActiveFlag("Y");
-    	theUser.setCreatedDate(CommonConstants.CURRENT_STR_DATE);
-        usrDao.saveUser(theUser);
+    public void saveUser(UserDTO userdto) {
+    	User usr = new User();
+    	usr.setActiveFlag(userdto.getActiveFlag());
+    	usr.setCreatedBy(userdto.getCreatedBy());
+    	try {
+			usr.setCreatedDate(CommonUserFMethods.convertToDate(userdto.getCreatedDate()));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+    	usr.setEmail(userdto.getEmail());
+    	usr.setFirstName(userdto.getFirstName());
+    	usr.setSecondName(userdto.getSecondName());
+    	usr.setRoleId(Integer.parseInt(userdto.getRoleId()));
+    	usr.setCreatedBy(Integer.parseInt(authenticationFacade.getUserIdFromAuth()));
+    	usr.setActiveFlag("Y");
+    	usr.setCreatedDate(CommonConstants.CURRENT_DATE);
+        usrDao.saveUser(usr);
+    }
+    
+  //save the user
+    @Override
+    @Transactional
+    public void updateUser(UserDTO userdto) {
+    	User usr = new User();
+    	usr.setCreatedBy(userdto.getCreatedBy());
+    	try {
+			usr.setCreatedDate(CommonUserFMethods.convertToDate(userdto.getCreatedDate()));
+		} catch (ParseException e) {
+		
+			e.printStackTrace();
+		}
+    	usr.setEmail(userdto.getEmail());
+    	usr.setFirstName(userdto.getFirstName());
+    	usr.setSecondName(userdto.getSecondName());
+    	usr.setRoleId(Integer.parseInt(userdto.getRoleId()));
+    	usr.setCreatedBy(Integer.parseInt(authenticationFacade.getUserIdFromAuth()));
+    	usr.setActiveFlag(userdto.getActiveFlag());
+    	usr.setUpdatedBy(Integer.parseInt(authenticationFacade.getUserIdFromAuth()));
+    	usr.setUpdatedDate(CommonConstants.CURRENT_DATE);
+    	usr.setUserId(userdto.getUserId());
+        usrDao.saveUser(usr);
     }
 
     @Override
-    @Transactional
-    public User getUser(int theId) {
-        return usrDao.getUser(theId);
+  
+    public UserDTO getUser(int theId) {
+        User usr = usrDao.getUser(theId);
+        UserDTO usrDto = new UserDTO();
+        usrDto.setActiveFlag(usr.getActiveFlag());
+        usrDto.setCreatedBy(usr.getCreatedBy());
+        usrDto.setCreatedDate( CommonUserFMethods.convertDateToString(usr.getCreatedDate()) );
+        usrDto.setEmail(usr.getEmail());
+        usrDto.setFirstName(usr.getFirstName());
+        usrDto.setRole(userRolesService.getUserRole(usr.getRoleId()));
+        usrDto.setSecondName(usr.getSecondName());
+        usrDto.setUpdatedBy(CommonUserFMethods.convertIntToString(usr.getUpdatedBy()));
+        usrDto.setUpdatedDate(usr.getUpdatedDate());
+        usrDto.setUserId(usr.getUserId());
+        return usrDto;
     }
 
     @Override
   
     public List<Object> getUserDetails(int theId) {
-           User usr = getUser(theId);
-           UserRoles usrRoles = userRolesService.getUserRole(usr.getRoleId());
+           UserDTO usrDto = getUser(theId);
+           UserRoles usrRoles = userRolesService.getUserRole(usrDto.getRole().getRoleId());
            List<Object> userDetailList = new ArrayList<Object>();
-           userDetailList.add(usr);
+           userDetailList.add(usrDto);
            userDetailList.add(usrRoles);
            return userDetailList;
            
     }
+
+	@Override
+	public String getUserFullName(int userId) {
+		
+		UserDTO usr = getUser(userId);
+		return usr.getFirstName().concat("  ").
+				concat(usr.getSecondName());
+	}
 
 	
 

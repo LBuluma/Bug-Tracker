@@ -40,7 +40,7 @@ public class Project {
 	private Date createdDate;
 	
 	@Column(name = "updated_date")
-	private String updatedDate;
+	private Date updatedDate;
 	
 	@Column(name = "description")
 	private String description;
@@ -121,11 +121,11 @@ public class Project {
 		this.createdDate = createdDate;
 	}
 
-	public String getUpdatedDate() {
+	public Date getUpdatedDate() {
 		return updatedDate;
 	}
 
-	public void setUpdatedDate(String updatedDate) {
+	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
 	

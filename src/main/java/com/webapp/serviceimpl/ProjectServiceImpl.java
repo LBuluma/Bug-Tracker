@@ -1,5 +1,6 @@
 package com.webapp.serviceimpl;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -7,55 +8,128 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.webapp.commonfunctions.CommonUserFMethods;
 import com.webapp.constants.CommonConstants;
 import com.webapp.dao.ProjectDao;
+import com.webapp.dto.ProjectDTO;
 import com.webapp.facade.AuthenticationFacade;
 import com.webapp.model.Project;
 import com.webapp.service.ProjectService;
-
+import com.webapp.service.UserService;
 
 @Service
-public class ProjectServiceImpl implements ProjectService{
-	
-	//projectdao object is autowired
+public class ProjectServiceImpl implements ProjectService {
+
+	// projectdao object is autowired
 	@Autowired
 	private ProjectDao projectDao;
-	
-	//Authentication object 
-   @Autowired
-    private AuthenticationFacade authenticationFacade;
 
-
+	// Authentication object
+	@Autowired
+	private AuthenticationFacade authenticationFacade;
 	
-	//get all the projects
+	
+	@Autowired
+	private UserService userService;
+	
+	
+	Project project =null;
+
+	private ProjectDTO projectDTO;
+
+	// get all the projects
 	@Override
 	public List<Project> getProjects() {
-		
-		return projectDao.getProjects();
+
+		 return projectDao.getProjects();
 	}
 
-	//save a new project
+	// save a new project
 	@Override
 	@Transactional
-	public void saveProject(Project project) {		
-		//Set the created date to the current date
-		project.setCreatedDate(CommonConstants.CURRENT_DATE);
-//		//set the owner to the current logged in user
-	project.setOwner(Integer.parseInt(authenticationFacade.getUserIdFromAuth()));
-	//set created by to the current logged in user
-	project.setCreatedBy(Integer.parseInt(authenticationFacade.getUserIdFromAuth()));
-		//save the project
-		projectDao.saveProject(project);
+	public void saveProject(ProjectDTO projectDto) {
 		
+		project = new Project();			
+		project.setStartDate(projectDto.getStartDate());	
+		project.setDescription(projectDto.getDescription());
+		
+		if(projectDto.getEndDate().length() > 0) {
+		project.setEndDate(projectDto.getEndDate());
+		}
+		project.setOwner(projectDto.getOwnerId());
+		project.setProjectName(projectDto.getProjectName());
+		// Set the created date to the current date
+		project.setCreatedDate(CommonConstants.CURRENT_DATE);
+		System.out.println("CommonConstants.CURRENT_DATE:"+ CommonConstants.CURRENT_DATE);
+//		//set the owner to the current logged in user
+		project.setOwner(Integer.parseInt(authenticationFacade.getUserIdFromAuth()));
+		// set created by to the current logged in user
+		project.setCreatedBy(Integer.parseInt(authenticationFacade.getUserIdFromAuth()));
+		// save the project
+		projectDao.saveProject(project);
+
 	}
 
-	
-	//get a specific project using project ID
+	// Update an existing project
+	@Override
+	@Transactional
+	public void updateProject(ProjectDTO projectDto) {
+		project = new Project();			
+		project.setStartDate(projectDto.getStartDate());	
+		project.setDescription(projectDto.getDescription());
+		
+		if(projectDto.getEndDate().length() > 0) {
+		project.setEndDate(projectDto.getEndDate());
+		}
+		project.setOwner(projectDto.getOwnerId());
+		project.setProjectName(projectDto.getProjectName());
+		// Set the created date to the current date
+		try {
+			project.setCreatedDate(CommonUserFMethods.convertToDate(projectDto.getCreatedDate()));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		project.setProjectId(projectDto.getProjectId());
+		project.setCreatedBy(projectDto.getCreatedBy());
+		
+		System.out.println("updateProject:createdDate " + projectDto.getCreatedDate() );
+		// Set the updated date to the current date
+		projectDto.setUpdatedDate(CommonConstants.CURRENT_STR_DATE);
+		// set updated by to the current logged in user
+		projectDto.setUpdatedBy(authenticationFacade.getUserIdFromAuth());
+		// save the project
+		projectDao.saveProject(project);
+
+	}
+
+	// get a specific project using project ID
 	@Override
 	public Project getProject(int projectId) {
 		return projectDao.getProject(projectId);
+
+	}
 	
+	
+	@Override
+	public ProjectDTO getProjectDto(int projectId) {
+		projectDTO = new ProjectDTO();
+		project = getProject(projectId);
+		projectDTO.setCreatedBy(project.getCreatedBy());
+		projectDTO.setCreatedDate(CommonUserFMethods.convertDateToString(project.getCreatedDate()));
+		projectDTO.setDescription(project.getDescription());
+		projectDTO.setEndDate(project.getEndDate());
+		projectDTO.setOwnerId(project.getOwner());
+		projectDTO.setProjectId(project.getProjectId());
+		projectDTO.setProjectName(project.getProjectName());
+		projectDTO.setStartDate(project.getStartDate());
+		projectDTO.setUpdatedBy(project.getUpdatedBy());
+		if(project.getUpdatedDate()!= null) {
+		projectDTO.setUpdatedDate(CommonUserFMethods.convertDateToString(project.getUpdatedDate()));
+		}
+		projectDTO.setOwnerName(userService.getUserFullName(project.getOwner()));
+		return projectDTO;
+
 	}
 
-	
 }

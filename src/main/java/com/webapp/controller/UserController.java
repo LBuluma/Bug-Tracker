@@ -1,6 +1,5 @@
 package com.webapp.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.webapp.dto.UserDTO;
 import com.webapp.model.User;
 import com.webapp.model.UserRoles;
 import com.webapp.service.UserRolesService;
@@ -46,28 +46,34 @@ public class UserController {
         return "user-form";
     }
     @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute("user") User theUser) {
-    userService.saveUser(theUser);
+    public String saveUser(@ModelAttribute("user") UserDTO userDto) {
+    	System.out.println("saveUser:" +userDto.getRoleId());
+    userService.saveUser(userDto);
+        return "redirect:/user/list";
+    }
+    
+    
+    @PostMapping(value="/updateUser")
+    public String updateUser(@ModelAttribute("user") UserDTO userDto) {
+      userService.updateUser(userDto);
         return "redirect:/user/list";
     }
 
     @GetMapping("/updateForm")
     public String showFormForUpdate(@RequestParam("userId") int theId,
         Model theModel) {
-        User theUser = userService.getUser(theId);
-        List<UserRoles> theUserRoleList=userRoleService.getUserRoles();
-        theModel.addAttribute("user", theUser);
-        theModel.addAttribute("userRoles", theUserRoleList);
+        UserDTO userDto = userService.getUser(theId);
+        List<UserRoles> userRoles = userRoleService.getUserRoles();
+        theModel.addAttribute("user", userDto);
+        theModel.addAttribute("userRoles", userRoles);
         return "update-user";
     }
     
     @GetMapping("/updateFor")
     public String showForm(@RequestParam("userId") int theId,
         Model theModel) {
-        User theUser = userService.getUser(theId);
-        UserRoles theUserRole=userRoleService.getUserRole(theUser.getRoleId());
+        UserDTO theUser = userService.getUser(theId);
         theModel.addAttribute("user", theUser);
-        theModel.addAttribute("userRoles", theUserRole);
         return "user-form-dtls";
     }
 

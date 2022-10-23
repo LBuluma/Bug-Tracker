@@ -70,7 +70,8 @@
 
           <td>
          <!-- display the update link -->
-         <a href="${updateLink}" onclick="if (!(confirm('Are you sure you want to update this project?'))) return false">Update</a>
+         <a href="${updateLink}" onclick="if (!(confirm('Are you sure you want to update this project?'))) 
+        	 return false">Update</a>
          | 
         </td>
 

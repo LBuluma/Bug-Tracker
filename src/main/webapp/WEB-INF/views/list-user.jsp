@@ -59,7 +59,7 @@
         <td>${tempUser.firstName}</td>
          <td>${tempUser.secondName}</td>
          <td><c:set var="flag" value="${tempUser.activeFlag}"/>
-         <c:if test="${flag == 'REGD'}">
+         <c:if test="${flag == 'REGD' || flag == 'Y' }">
          <c:out value="YES"/>
          </c:if>
          <c:if test="${flag == 'DRMT'}">
@@ -70,7 +70,7 @@
 
           <td>
          <!-- display the update link -->
-         <a href="${updateLink}" onclick="if (!(confirm('Are you sure you want to update this user?'))) return false">Update</a>
+         <a href="${updateLink}">Update</a>
          | 
         </td>
 

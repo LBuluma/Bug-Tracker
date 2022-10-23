@@ -19,13 +19,22 @@
    <h2 class="text-center">Project</h2>
    <div class="panel panel-info">
     <div class="panel-heading">
-     <div class="panel-title">Add Project</div>
+     <div class="panel-title">Update Project</div>
     </div>
     <div class="panel-body">
-     <form:form action="saveProject" cssClass="form-horizontal"
+     <form:form action="updateProject" cssClass="form-horizontal"
       method="post" modelAttribute="project">
 
-    
+      <!-- need to associate this data with project id -->
+      <form:hidden path="projectId" />
+      
+      <form:hidden path="createdBy" />
+      
+      <form:hidden path="createdDate" />
+      
+       <form:hidden path="ownerId" />
+       
+   
       
     
 
@@ -36,16 +45,18 @@
        </div>
       </div>
       
-      
+       <div class="form-group">
+       <label for="projectname" class="col-md-3 control-label">Owner  Name</label>
+       <div class="col-md-9">
+        <input value="${project.ownerName}"  readonly/>
+       </div>
+      </div>
       <div class="form-group">
        <label for="startdate" class="col-md-3 control-label">Start Date</label>
        <div class="col-md-9">
         <form:input path="startDate" cssClass="form-control"  type="date"/>
        </div>
       </div>
-      
-      
-      
       <div class="form-group">
        <label for="enddate" class="col-md-3 control-label" >End Date</label>
        <div class="col-md-9">

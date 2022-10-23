@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.webapp.dto.ProjectDTO;
 import com.webapp.model.Project;
 import com.webapp.service.ProjectService;
 
@@ -47,16 +48,25 @@ public class ProjectController {
 
 	//save a new project
 	@PostMapping("/saveProject")
-	public String saveProject(@ModelAttribute("project") Project theProject) throws ParseException {
-		projectService.saveProject(theProject);
+	public String saveProject(@ModelAttribute("project") ProjectDTO projectDto) throws ParseException {
+		projectService.saveProject(projectDto);
 		return "redirect:/project/view";
 	}
 
 	@GetMapping("/updateProjectForm")
 	public String showFormForUpdate(@RequestParam("projectId") int theId, Model theModel) {
-		Project theProject = projectService.getProject(theId);
-		theModel.addAttribute("project", theProject);
-		return "project-form";
+		ProjectDTO projectDto = projectService.getProjectDto(theId);
+		System.out.println("showFormForUpdate:" +projectDto.getOwnerName());
+		theModel.addAttribute("project", projectDto);
+		return "update-project";
 	}
+	
+	//save a new project
+		@PostMapping("/updateProject")
+		public String updateProject(@ModelAttribute("project") ProjectDTO projectDto) throws ParseException {
+			System.out.println("updateProject:IN");
+			projectService.updateProject(projectDto);
+			return "redirect:/project/view";
+		}
 
 }

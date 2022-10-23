@@ -2,6 +2,7 @@ package com.webapp.dao;
 
 import java.util.List;
 
+import com.webapp.dto.ProjectDTO;
 import com.webapp.model.Project;
 
 

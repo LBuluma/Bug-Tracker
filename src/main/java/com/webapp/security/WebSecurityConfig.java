@@ -68,7 +68,7 @@ public class WebSecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests().antMatchers("/", "/login").permitAll() // permit all the requests for the two links
+		http.csrf().disable().authorizeRequests().antMatchers("/", "/login").permitAll() // permit all the requests for the two links
 				.antMatchers("/home/*").hasRole("ADMIN").anyRequest().authenticated().and().formLogin()
 				.loginPage("/login").defaultSuccessUrl("/home").failureUrl("/login?error").usernameParameter("username")
 				.passwordParameter("password").and().logout().logoutSuccessUrl("/login?logout");

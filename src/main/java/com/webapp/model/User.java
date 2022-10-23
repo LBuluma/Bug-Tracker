@@ -19,7 +19,7 @@ public class User {
 	private int userId;
 
 	@Column(name = "created_date")
-	private String createdDate;
+	private Date createdDate;
 	
 	@Column(name = "first_name")
 	private String firstName;
@@ -110,11 +110,11 @@ public class User {
 
 
 
-	public String getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(String createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 
