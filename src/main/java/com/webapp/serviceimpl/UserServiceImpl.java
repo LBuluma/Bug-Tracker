@@ -15,6 +15,7 @@ import com.webapp.dto.UserDTO;
 import com.webapp.facade.AuthenticationFacade;
 import com.webapp.model.User;
 import com.webapp.model.UserRoles;
+import com.webapp.service.ApplicationUserService;
 import com.webapp.service.UserRolesService;
 import com.webapp.service.UserService;
 
@@ -30,6 +31,11 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private AuthenticationFacade authenticationFacade;
+	
+    
+    @Autowired
+    private ApplicationUserService applicationUserService;
+
 
 
 
@@ -45,13 +51,8 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void saveUser(UserDTO userdto) {
     	User usr = new User();
-    	usr.setActiveFlag(userdto.getActiveFlag());
+//    	usr.setActiveFlag(userdto.getActiveFlag());
     	usr.setCreatedBy(userdto.getCreatedBy());
-    	try {
-			usr.setCreatedDate(CommonUserFMethods.convertToDate(userdto.getCreatedDate()));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
     	usr.setEmail(userdto.getEmail());
     	usr.setFirstName(userdto.getFirstName());
     	usr.setSecondName(userdto.getSecondName());
@@ -60,6 +61,8 @@ public class UserServiceImpl implements UserService {
     	usr.setActiveFlag("Y");
     	usr.setCreatedDate(CommonConstants.CURRENT_DATE);
         usrDao.saveUser(usr);
+        userdto.setUserId(usr.getUserId());
+        applicationUserService.saveAppUsr(userdto);
     }
     
   //save the user

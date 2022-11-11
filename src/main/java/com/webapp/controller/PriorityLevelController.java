@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.webapp.dto.PriorityLevelDTO;
 import com.webapp.model.PriorityLevel;
 import com.webapp.service.PriorityLevelService;
 
@@ -31,22 +32,29 @@ public class PriorityLevelController {
 
 	@GetMapping("/showForm")
 	public String showFormForAdd(Model theModel) {
-		PriorityLevel thePriorityLevel = new PriorityLevel();
-		theModel.addAttribute("priorityLevel", thePriorityLevel);
+		PriorityLevelDTO priorityLevelDTO = new PriorityLevelDTO();
+		theModel.addAttribute("priorityLevel", priorityLevelDTO);
 		return "project-priorityLevel-form";
 	}
 
 	@PostMapping("/savePriority")
-	public String savePriority(@ModelAttribute("priorityLevel") 	PriorityLevel thePriorityLevel) {
-		priorityLevelService.addNewPriorityLevel(thePriorityLevel);
+	public String savePriority(@ModelAttribute("priorityLevel") 	PriorityLevelDTO priorityLevelDto) {
+		priorityLevelService.addNewPriorityLevel(priorityLevelDto);
 		return "redirect:/priority/view";
 	}
+	
+	@PostMapping("/updatePriority")
+	public String updatePriority(@ModelAttribute("priorityLevel") 	PriorityLevelDTO priorityLevelDto) {
+		priorityLevelService.updatePriorityLevel(priorityLevelDto);
+		return "redirect:/priority/view";
+	}
+	
 
 	@GetMapping("/updatePriorityForm")
 	public String showFormForUpdate(@RequestParam("priorityLevelId") int theId, Model theModel) {
-		PriorityLevel thePriorityLevel = priorityLevelService.getPriorityLevel(theId);
-		theModel.addAttribute("priorityLevel", thePriorityLevel);
-		return "project-priorityLevel-form";
+		PriorityLevelDTO priorityLevelDto = priorityLevelService.getPriorityLevel(theId);
+		theModel.addAttribute("priorityLevel", priorityLevelDto);
+		return "update-prioritylevel-form";
 	}
 
 }

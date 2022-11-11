@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.webapp.dto.UserDTO;
 import com.webapp.model.User;
 import com.webapp.model.UserRoles;
+import com.webapp.service.ApplicationUserService;
 import com.webapp.service.UserRolesService;
 import com.webapp.service.UserService;
 
@@ -46,9 +48,11 @@ public class UserController {
         return "user-form";
     }
     @PostMapping("/saveUser")
+    @Transactional
     public String saveUser(@ModelAttribute("user") UserDTO userDto) {
     	System.out.println("saveUser:" +userDto.getRoleId());
-    userService.saveUser(userDto);
+        userService.saveUser(userDto);
+        
         return "redirect:/user/list";
     }
     

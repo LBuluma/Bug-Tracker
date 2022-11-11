@@ -1,45 +1,23 @@
-package com.webapp.model;
-
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+package com.webapp.dto;
 
 
-@Entity
-@Table(name = "tracker.priority_level")
-public class PriorityLevel {
+
+public class PriorityLevelDTO {
 	
-	@Id
-	@Column(name = "priority_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int priorityId;
+     private int priorityId;
 	
-	@Column(name = "priority_name")
+	
 	private String priorityName;
 	
-	@Column(name = "level_plan")
 	private int levelPlan;
 	
-	@Column(name = "updated_by")
 	private int updatedBy;
 	
-	@Column(name = "created_by")
 	private int createdBy;
 	
-	@Column(name = "created_date")
-	private Date createdDate;
+	private String createdDate;
 	
-	@Column(name = "updated_date")
-	private Date updatedDate;
-
-	public PriorityLevel() {
-		super();
-	}
+	private String updatedDate;
 
 	public int getPriorityId() {
 		return priorityId;
@@ -81,21 +59,22 @@ public class PriorityLevel {
 		this.createdBy = createdBy;
 	}
 
-	public Date getCreatedDate() {
+	public String getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(String createdDate) {
 		this.createdDate = createdDate;
 	}
 
-	public Date getUpdatedDate() {
+	public String getUpdatedDate() {
 		return updatedDate;
 	}
 
-	public void setUpdatedDate(Date updatedDate) {
+	public void setUpdatedDate(String updatedDate) {
 		this.updatedDate = updatedDate;
 	}
+	
 	
 	
 

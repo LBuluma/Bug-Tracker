@@ -34,12 +34,12 @@
        <th>#</th>    
        <th>Priority Name</th>
        <th>SLA(in days)</th>
-       <th>Created Date</th>      
+     <%--   <th>Created Date</th>      
        <th>Created By</th>
        <c:if test="${priorityLevel.updatedDate} != null">
        <th>Updated Date</th>      
        <th>Updated By</th>
-       </c:if>
+       </c:if> --%>
        <th>Action</th>
       </tr>
 
@@ -64,19 +64,19 @@
        <td>${status.count}.</td>
         <td>${priorityLevel.priorityName}</td>
          <td>${priorityLevel.levelPlan}</td>
-         <td>${priorityLevel.createdDate}</td>
-         <td>${priorityLevel.createdBy}</td>
+      <%--    <td>${priorityLevel.createdDate}</td>
+          <td>${priorityLevel.createdBy}</td>
          <c:if test="${priorityLevel.updatedDate} != null">
          <td>${priorityLevel.updatedDate}</td>
          <td>${priorityLevel.updatedBy}</td>
-         </c:if>
+         </c:if>  --%>
          
 
        
 
           <td>
          <!-- display the update link -->
-         <a href="${updateLink}" onclick="if (!(confirm('Are you sure you want to update this priority?'))) return false">Update</a>
+         <a href="${updateLink}" >Update</a>
          | 
         </td>
 

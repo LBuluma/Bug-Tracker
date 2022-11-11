@@ -2,11 +2,11 @@ package com.webapp.service;
 
 import org.springframework.security.core.Authentication;
 
-import com.webapp.model.ApplicationUser;
+import com.webapp.dto.UserDTO;
 
 public interface ApplicationUserService {
 	
-    void saveAppUsr(ApplicationUser appUsr);
+    void saveAppUsr(UserDTO userDto);
    
     String getUserIdByName(String email);
     

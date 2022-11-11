@@ -47,7 +47,9 @@ public class WebSecurityConfig {
 						+ " true from tracker.app_user where email=?")
 				.authoritiesByUsernameQuery(
 						"select appusr.email as principal," + "usrrole.role_name from tracker.user_role usrrole,"
-								+ "tracker.app_user appusr where usrrole.role_id " + "= appusr.role_id and appusr.email =?")
+								+ "tracker.app_user appusr where usrrole.role_id " 
+								+ "= appusr.role_id and appusr.email =?"
+								+" and appusr.locked = 'N'")
 				.passwordEncoder(passwordEncoder());
 
 	}

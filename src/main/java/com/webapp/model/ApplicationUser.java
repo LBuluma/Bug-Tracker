@@ -1,6 +1,8 @@
 package com.webapp.model;
 
 import java.io.Serializable;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +21,7 @@ public class ApplicationUser implements Serializable{
 
 	
 	@Id
-	@Column(name = "app__user_id")
+	@Column(name = "app_user_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int appUserId;
 
@@ -43,17 +45,17 @@ public class ApplicationUser implements Serializable{
     private String enabled;
     
     @Column(name = "updated_by")
-    private String updatedBy;
+    private int updatedBy;
     
     @Column(name = "updated_date")
-    private String updatedDate;
+    private Date updatedDate;
     
     
     @Column(name = "created_by")
-    private String createdBy;
+    private int createdBy;
     
     @Column(name = "created_date")
-    private String createdDate;
+    private Date createdDate;
     
     @Column(name = "user_id")
     private int userId;
@@ -65,7 +67,7 @@ public class ApplicationUser implements Serializable{
 	}
 
 	public void setUserId(int userId) {
-		userId = userId;
+		this.userId = userId;
 	}
 
 	public String getUsername() {
@@ -116,36 +118,36 @@ public class ApplicationUser implements Serializable{
 		this.enabled = enabled;
 	}
 
-	public String getUpdatedBy() {
+	public int getUpdatedBy() {
 		return updatedBy;
 	}
 
-	public void setUpdatedBy(String updatedBy) {
+	public void setUpdatedBy(int updatedBy) {
 		this.updatedBy = updatedBy;
 	}
 
-	public String getUpdatedDate() {
+	public Date getUpdatedDate() {
 		return updatedDate;
 	}
 
-	public void setUpdatedDate(String updatedDate) {
+	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
 
-	public String getCreatedBy() {
+	public int getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(String createdBy) {
+	public void setCreatedBy(int createdBy) {
 		this.createdBy = createdBy;
 	}
 
-	public String getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(String createdDate) {
-		this.createdDate = createdDate;
+	public void setCreatedDate(Date currentDate) {
+		this.createdDate = currentDate;
 	}
 
 	public int getAppUserId() {
