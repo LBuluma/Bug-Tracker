@@ -8,10 +8,12 @@ import com.webapp.model.User;
 
 public interface UserService {
 
-	public List<User> getUsers();
-	public  void saveUser(UserDTO userDto);
-	public  UserDTO getUser(int usrId);
-	public List<Object> getUserDetails(int usrId);
+	 List<User> getUsers();
+	  void saveUser(UserDTO userDto);
+	  UserDTO getUser(int usrId);
+     List<Object> getUserDetails(int usrId);
 	void updateUser(UserDTO userDto);
 	String getUserFullName(int userId);
+	int getUserRoleId(int userId);
+	List<User> getUsersByRoleId(int roleId);
 }

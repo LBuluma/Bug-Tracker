@@ -9,17 +9,28 @@ import com.webapp.model.Project;
 public interface ProjectService {
 
 	//Get all projects in the database
-		public List<Project> getProjects();
+		public List<ProjectDTO> getProjects();
 		
 		//save a new 
-		public  void saveProject(ProjectDTO projectDto) throws ParseException;
+		  void saveProject(ProjectDTO projectDto) throws ParseException;
 		
 		//Get the project with the project id.
-		public  Project getProject(int projectId);
+		  Project getProject(int projectId);
 
 		//update a project
-		public  void updateProject(ProjectDTO projectDto) throws ParseException;
+		  void updateProject(ProjectDTO projectDto) throws ParseException;
 
 		ProjectDTO getProjectDto(int projectId);
+		
+		//Get project with user Id 
+		List<Project> getProjectsWithUserId(int userId);
+		
+		//Get projects using project owner
+		List<Project> getProjectsWithOwnerId();
+		
+		//Get project name with project Id
+		String getProjectNameWithId(int projectId);
+		
+		ProjectDTO convertProjectToDto(Project project);
 				
 }

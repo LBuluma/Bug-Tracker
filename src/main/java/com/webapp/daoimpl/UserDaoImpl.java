@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.webapp.constants.CommonConstants;
 import com.webapp.dao.UserDao;
 import com.webapp.model.User;
 
@@ -53,6 +54,23 @@ public class UserDaoImpl implements UserDao {
 		session.close();
 		return user;
 		
+	}
+
+	@Override
+	public int getUserRoleId(int usrId) {
+		return getUser(usrId).getRoleId();
+	}
+
+	@Override
+	public List<User> getUsersById(int roleId) {
+		Session session = this.sessionFactory.openSession();
+		@SuppressWarnings("unchecked")
+		List<User> userList = session.createQuery("from User where roleId =:roleId and activeFlag =:activeFlag")
+		.setParameter("roleId", roleId)
+		.setParameter("activeFlag", CommonConstants.ACTIVE_FLAG)
+		.getResultList();
+		session.close();
+		return userList;
 	}
 	
 //	public void deleteUser(int usrId) {

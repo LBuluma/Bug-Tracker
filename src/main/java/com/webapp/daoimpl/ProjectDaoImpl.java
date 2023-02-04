@@ -46,6 +46,32 @@ public class ProjectDaoImpl implements ProjectDao {
 		return project;
 	}
 
+	@Override
+	public List<Project> getProjectWithUserId(int userId) {
+//		Session session = this.sessionFactory.openSession();
+//		List<Project> projectsList = session.createQuery("from Project").getResultList();
+//		session.close();
+		return null;
+	}
+
+	//gets all the projects created by the specific PM/Admin
+	@Override
+	public List<Project> getProjectWithOwnerId(int ownerId) {
+		Session session = this.sessionFactory.openSession();
+		@SuppressWarnings("unchecked")
+		List<Project> projectsList = session.createQuery("from  Project where owner =:ownrId").setParameter("ownrId", ownerId).getResultList();
+		session.close();
+		return projectsList;
+		
+	}
+
+	
+	//Implement the get project name method
+	@Override
+	public String getProjectNameWithId(int projectId) {		
+		return (getProject(projectId).getProjectName());
+	}
+
 	
 
 

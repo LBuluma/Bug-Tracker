@@ -16,7 +16,7 @@
         <p><a href="project/view" class="pe-auto" tabindex="-1" >View projects</a></p>
         <p><a href="priority/view" class="pe-auto" tabindex="-1" >Maintain Priority Levels</a></p>
 <p><a href="user/list" class="pe-auto">View Users</a></p>
-<p class="pe-auto"><a href="assignment/view" tabindex="-1" >View Assign</a><p>
+<p class="pe-auto"><a href="assignment/viewProjectAssignment" tabindex="-1" >View Assign</a><p>
 <a href="#" class="pe-auto">X</a> has a <code>pe-auto</code> class and can be clicked.</p>
     </body>
 </html>

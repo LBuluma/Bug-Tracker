@@ -34,15 +34,14 @@
 
        <th>Project Name</th>
        <th>Assigned To:</th>
+       <th>Role</th>  
        <th>Assignment Date</th>      
-       <th>Assigned by</th>
-       <th>Updated By</th>
-       <th>Update Date</th>
+       
        <th>Action</th>
       </tr>
 
       <!-- loop over and print our customers -->
-      <c:forEach var="projectAssignment" items="${projectAssignment}">
+      <c:forEach var="projectAssignment" items="${theProjectAssignmentDto}">
    
 
       <!-- construct an "update" link with customer id -->
@@ -53,12 +52,12 @@
 
 
        <tr>
-        <td>${projectAssignment.assignmentId}</td>
-         <td>${projectAssignment.assignedId}</td>
+        <td>${projectAssignment.projectName}</td>
+         <td>${projectAssignment.assignedName}</td>
+          <td>${projectAssignment.roleName}</td>
          <td>${projectAssignment.assignmentDate}</td>
-         <td>${projectAssignment.createdBy}</td>
-        <td>${projectAssignment.updatedBy}</td>
-        <td>${projectAssignment.updatedDate}</td>
+      
+ 
        
 
           <td>

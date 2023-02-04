@@ -1,6 +1,7 @@
 package com.webapp.serviceimpl;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -39,9 +40,19 @@ public class ProjectServiceImpl implements ProjectService {
 
 	// get all the projects
 	@Override
-	public List<Project> getProjects() {
+	public List<ProjectDTO> getProjects() {
+		
+		List <ProjectDTO> projectDtoList = new ArrayList<>();
+		List <Project > projectList = projectDao.getProjects();
+		for ( Project projectVar :  projectList) {
+			ProjectDTO projectDto = convertProjectToDto(projectVar);
+			projectDto.setOwnerName(userService.getUserFullName(projectVar.getOwner()));
+			projectDtoList.add(projectDto);
+			
+		}
+		
 
-		 return projectDao.getProjects();
+		 return projectDtoList;
 	}
 
 	// save a new project
@@ -113,8 +124,31 @@ public class ProjectServiceImpl implements ProjectService {
 	
 	@Override
 	public ProjectDTO getProjectDto(int projectId) {
+		return convertProjectToDto(getProject(projectId));
+
+	}
+
+	@Override
+	public List<Project> getProjectsWithUserId(int userId) {
+		
+		return null;
+	}
+
+	@Override
+	public List<Project> getProjectsWithOwnerId() {
+		int projectService = Integer.parseInt(authenticationFacade.getUserIdFromAuth());
+		return projectDao.getProjectWithOwnerId(projectService);
+		
+	}
+
+	@Override
+	public String getProjectNameWithId(int projectId) {
+		return projectDao.getProjectNameWithId(projectId);
+	}
+	
+	@Override
+	public ProjectDTO convertProjectToDto(Project project) {
 		projectDTO = new ProjectDTO();
-		project = getProject(projectId);
 		projectDTO.setCreatedBy(project.getCreatedBy());
 		projectDTO.setCreatedDate(CommonUserFMethods.convertDateToString(project.getCreatedDate()));
 		projectDTO.setDescription(project.getDescription());
@@ -131,5 +165,8 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectDTO;
 
 	}
+
+
+
 
 }

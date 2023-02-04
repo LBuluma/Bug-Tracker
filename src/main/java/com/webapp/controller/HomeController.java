@@ -28,7 +28,8 @@ public class HomeController {
 		System.out.println("homePage: IN");
 		session.setAttribute("userId",authenticationFacade.getUserIdFromAuth());
 		session.setAttribute("userRole",authenticationFacade.getUserRoleFromAuth());
-		return new ModelAndView("home");
+		session.setAttribute("userInfo", session);
+		return new ModelAndView("index");
 	}
 	
 	@RequestMapping(value="/")
@@ -36,4 +37,6 @@ public class HomeController {
 		System.out.println("welcomePage: IN");
 		return new ModelAndView("welcome");
 	}
+	
+	
 }

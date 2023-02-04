@@ -48,6 +48,11 @@ public class UserRolesDaoImpl implements UserRolesDao
 		return userRoles;
 	}
 
+	@Override
+	public String getUserRoleNameWithId(int roleId) {
+		return (getUserRole(roleId).getRoleName());
+	}
+
 	
 
 }

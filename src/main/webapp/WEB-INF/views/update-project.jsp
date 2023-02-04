@@ -32,7 +32,7 @@
       
       <form:hidden path="createdDate" />
       
-       <form:hidden path="ownerId" />
+ 
        
    
       
@@ -46,11 +46,23 @@
       </div>
       
        <div class="form-group">
-       <label for="projectname" class="col-md-3 control-label">Owner  Name</label>
+       <label for="projectname" class="col-md-3 control-label">Current Owner:</label>
        <div class="col-md-9">
         <input value="${project.ownerName}"  readonly/>
        </div>
       </div>
+      
+      <div class="form-group">
+       <label for="projectname" class="col-md-3 control-label">Assign to:</label>
+       <div class="col-md-9">     
+      <form:select path="ownerId">
+        <c:forEach var="userLst" items="${userList}">
+           <form:option value="${userLst.userId}" label="${userLst.firstName} ${userLst.secondName}" />
+            </c:forEach>
+        </form:select>
+          </div>
+      </div>
+          
       <div class="form-group">
        <label for="startdate" class="col-md-3 control-label">Start Date</label>
        <div class="col-md-9">

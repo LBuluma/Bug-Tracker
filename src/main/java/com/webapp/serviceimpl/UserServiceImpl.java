@@ -87,6 +87,7 @@ public class UserServiceImpl implements UserService {
     	usr.setUpdatedDate(CommonConstants.CURRENT_DATE);
     	usr.setUserId(userdto.getUserId());
         usrDao.saveUser(usr);
+        applicationUserService.saveAppUsr(userdto);
     }
 
     @Override
@@ -125,6 +126,17 @@ public class UserServiceImpl implements UserService {
 		UserDTO usr = getUser(userId);
 		return usr.getFirstName().concat("  ").
 				concat(usr.getSecondName());
+	}
+
+	@Override
+	public int getUserRoleId(int userId) {
+		return usrDao.getUserRoleId(userId);
+	}
+
+	@Override
+	public List<User> getUsersByRoleId(int roleId) {
+		
+		return usrDao.getUsersById(roleId);
 	}
 
 	

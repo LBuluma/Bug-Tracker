@@ -26,6 +26,11 @@ public class ApplicationUserServiceImpl implements ApplicationUserService{
 	@Override
 	public void saveAppUsr(UserDTO userDto) {
 		ApplicationUser appUsr = new ApplicationUser();
+		
+		if (userDto.getActiveFlag().isEmpty()) {
+			userDto.setActiveFlag("Y");
+		}
+		appUsr.setLocked(userDto.getActiveFlag());
 		appUsr.setCreatedBy(Integer.parseInt(authenticationFacade.getUserIdFromAuth() ));
 		appUsr.setCreatedDate(CommonConstants.CURRENT_DATE);
 		appUsr.setEmail(userDto.getEmail());
@@ -37,7 +42,7 @@ public class ApplicationUserServiceImpl implements ApplicationUserService{
 		appUsr.setUsername(userDto.getEmail());
 		appUsr.setUserId(userDto.getUserId());
 		appUsr.setEnabled("1");
-		appUsr.setLocked("Y");		
+				
 		appUserDao.saveAppUsr(appUsr);
 	}
 
@@ -58,6 +63,13 @@ public class ApplicationUserServiceImpl implements ApplicationUserService{
 		if (!(authentication instanceof AnonymousAuthenticationToken)) {
 		    return authentication;
 		}
+		return null;
+	}
+
+
+	@Override
+	public ApplicationUser getApplicationUserById(String userId) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	

@@ -31,12 +31,19 @@ public class UserRolesServiceImpl implements UserRolesService{
 	@Transactional
 	public void addNewUserRole(UserRoles userRoles) {
 		userRoles.setCreatedDate(CommonConstants.CURRENT_STR_DATE);
+		userRoles.setCreatedBy(Integer.parseInt(authenticationFacade.getUserIdFromAuth()));
 		userRolesDao.addNewUserRole(userRoles);		
 	}
 
 	@Override
 	public UserRoles getUserRole(int roleId) {
 		return userRolesDao.getUserRole(roleId);
+	}
+
+	@Override
+	public String getUserRoleNameWithId(int roleId) {
+		
+		return userRolesDao.getUserRoleNameWithId(roleId) ;
 	}
 
 	

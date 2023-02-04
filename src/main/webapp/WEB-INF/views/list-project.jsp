@@ -61,7 +61,7 @@
        <tr>
        <td>${status.count}.</td>
         <td>${tempProject.projectName}</td>
-         <td>${tempProject.owner}</td>
+         <td>${tempProject.ownerName}</td>
          <td>${tempProject.startDate}</td>
          <td>${tempProject.endDate}</td>
         <td>${tempProject.description}</td>

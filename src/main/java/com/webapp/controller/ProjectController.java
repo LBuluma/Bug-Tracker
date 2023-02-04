@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.webapp.dto.ProjectDTO;
 import com.webapp.model.Project;
+import com.webapp.model.User;
 import com.webapp.service.ProjectService;
+import com.webapp.service.UserService;
 
 
 @Controller
@@ -27,11 +29,16 @@ public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
 	
+
+	@Autowired
+	private UserService userService;
+	
+	
 //List all the projects contained in the application
 	@GetMapping("/view")
 	public String listProjects(Model theModel) {
 		//Retrieve projects and store them in a list
-		List<Project> theProjects = projectService.getProjects();
+		List<ProjectDTO> theProjects = projectService.getProjects();
 		
 		theModel.addAttribute("projects", theProjects);
 		return "list-project";
@@ -57,7 +64,10 @@ public class ProjectController {
 	public String showFormForUpdate(@RequestParam("projectId") int theId, Model theModel) {
 		ProjectDTO projectDto = projectService.getProjectDto(theId);
 		System.out.println("showFormForUpdate:" +projectDto.getOwnerName());
+		List<User> userLst = userService
+				.getUsersByRoleId(userService.getUserRoleId(projectDto.getOwnerId()));
 		theModel.addAttribute("project", projectDto);
+		theModel.addAttribute("userList", userLst);
 		return "update-project";
 	}
 	

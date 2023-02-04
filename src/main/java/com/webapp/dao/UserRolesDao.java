@@ -7,11 +7,14 @@ import com.webapp.model.UserRoles;
 public interface UserRolesDao {
 
 	// Get all user roles in the database for the projects
-			public List<UserRoles> getUserRoles();
+			 List<UserRoles> getUserRoles();
 
 			// save a new or updated Ticket comment
-			public void addNewUserRole(UserRoles userRoles);
+			 void addNewUserRole(UserRoles userRoles);
 
 			// Get the user role using id.
-			public UserRoles getUserRole(int roleId);
+			 UserRoles getUserRole(int roleId);
+			 
+			 //get user role name using role id
+			 String getUserRoleNameWithId(int roleId);
 }

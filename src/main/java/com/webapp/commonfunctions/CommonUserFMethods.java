@@ -8,6 +8,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 
+import com.webapp.dto.UserDTO;
+
 public class CommonUserFMethods {
 	
 	public static Date convertToDate(String dateInString) throws ParseException {
@@ -21,8 +23,11 @@ public class CommonUserFMethods {
 		return dateFormat.format(date);
 	}
 	
-	public static String convertIntToString(int intToConvert) {
-		return String.valueOf(intToConvert);
+	public static String convertIntToString(int i) {
+		return String.valueOf(i);
 	}
 
+	public static int convertStringToInt(String stringToConvert) {
+		return Integer.parseInt(stringToConvert);
+	}
 }

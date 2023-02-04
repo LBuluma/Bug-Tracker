@@ -27,19 +27,40 @@
 
       <!-- need to associate this data with customer id -->
       <form:hidden path="assignmentId" />
-
+      
       <div class="form-group">
-       <label for="projectId" class="col-md-3 control-label">Project  Name</label>
+       <label for="projectName" class="col-md-3 control-label">Project Name:</label>
+     <div class="col-md-9">
+        <form:input path="projectId" value="${projectAssignment.projectId}"  label="${projectAssignment.projectName}"  cssClass="form-control" />
+       </div>
+        </div> 
+        
+        
+       <div class="form-group">
+       <label for="role" class="col-md-3 control-label">Role:</label>
+      <form:select path="roleId">
+        <c:forEach var="userRoles" items="${roles}">
+           <form:option value="${userRoles.roleId}" label="${userRoles.roleName}" />
+            </c:forEach>
+        </form:select>
+        </div>    
+        
+         <div class="form-group">
+       <label for="user" class="col-md-3 control-label">User:</label>
+       <form:select path="assignedId">
+        <c:forEach var="users" items="${users}">
+           <form:option value="${users.userId}" label="${users.firstName}    ${users.secondName}" />
+            </c:forEach>
+        </form:select>  
+        </div>
+        
+         <div class="form-group">
+       <label for="comments" class="col-md-3 control-label">comments</label>
        <div class="col-md-9">
-        <form:input path="projectId" cssClass="form-control" />
+        <form:input path="comments" cssClass="form-control" />
        </div>
       </div>
-      <div class="form-group">
-       <label for="assignedid" class="col-md-3 control-label">Assign to:</label>
-       <div class="col-md-9">
-        <form:input path="assignedId" cssClass="form-control" />
-       </div>
-      </div>
+        
       
 
       <div class="form-group">

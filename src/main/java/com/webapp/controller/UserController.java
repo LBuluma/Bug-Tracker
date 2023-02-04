@@ -45,8 +45,15 @@ public class UserController {
         List<UserRoles> theUserRoleList=userRoleService.getUserRoles();
         theModel.addAttribute("user", theUser);
         theModel.addAttribute("userRoles", theUserRoleList);
-        return "user-form";
+        return "components-tooltips";
     }
+    
+    @GetMapping("/showPage")
+    public String Testing(Model theModel) {
+  
+        return "pages-login";
+    }
+    
     @PostMapping("/saveUser")
     @Transactional
     public String saveUser(@ModelAttribute("user") UserDTO userDto) {

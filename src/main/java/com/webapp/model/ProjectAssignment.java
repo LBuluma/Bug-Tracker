@@ -25,10 +25,10 @@ public class ProjectAssignment {
 	private int assignedId;
 	
 	@Column(name = "assignment_date")
-	private String assignmentDate;
+	private Date assignmentDate;
 	
 	@Column(name = "created_date")
-	private String createdDate;
+	private Date createdDate;
 	
 	@Column(name = "created_by")
 	private int createdBy;
@@ -37,9 +37,29 @@ public class ProjectAssignment {
 	private int updatedBy;
 	
 	@Column(name = "updated_date")
-	private String updatedDate;
+	private Date updatedDate;
+	
+	@Column(name ="comments")
+	private String comments;
+	
+	@Column(name ="flag")
+	private String flag;
 	
 	
+	
+	
+	public String getFlag() {
+		return flag;
+	}
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+	public String getComments() {
+		return comments;
+	}
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
 	public int getAssignmentId() {
 		return assignmentId;
 	}
@@ -58,16 +78,16 @@ public class ProjectAssignment {
 	public void setAssignedId(int assignedId) {
 		this.assignedId = assignedId;
 	}
-	public String getAssignmentDate() {
+	public Date getAssignmentDate() {
 		return assignmentDate;
 	}
-	public void setAssignmentDate(String assignmentDate) {
+	public void setAssignmentDate(Date assignmentDate) {
 		this.assignmentDate = assignmentDate;
 	}
-	public String getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
-	public void setCreatedDate(String createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 	public int getCreatedBy() {
@@ -82,10 +102,10 @@ public class ProjectAssignment {
 	public void setUpdatedBy(int updatedBy) {
 		this.updatedBy = updatedBy;
 	}
-	public String getUpdatedDate() {
+	public Date getUpdatedDate() {
 		return updatedDate;
 	}
-	public void setUpdatedDate(String updatedDate) {
+	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
 	
